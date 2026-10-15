@@ -1,0 +1,13 @@
+schema_version: 1.0
+default_profile: mixed_text_data
+profiles:
+  mixed_text_data:
+    policy:
+      retry_attempts: 2
+      timeout: 60
+      size_tolerance_bytes: 0
+    data:
+    - name: local_sample
+      source_type: backpack
+      source: data/h1l1
+      target_location: data/
