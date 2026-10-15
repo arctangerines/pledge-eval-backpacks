@@ -1,0 +1,20 @@
+schema_version: 1.0
+default_profile: mixed_text_data
+profiles:
+  mixed_text_data:
+    policy:
+      retry_attempts: 2
+      timeout: 60
+      size_tolerance_bytes: 0
+    data:
+    - name: local_sample
+      source_type: backpack
+      source: data/text_data/local-sample.txt
+      target_location: data/text_data/local-sample.txt
+      expected_size: 252
+      checksum: sha256:7a86736cfa91103d1af5b54b94ff7ad008a7be154df14481106547c5861ccc92
+    - name: war_and_peace
+      source_type: http
+      source: https://www.gutenberg.org/cache/epub/2600/pg2600.txt
+      content_type: text/plain
+      target_location: data/text_data/war-and-peace.txt

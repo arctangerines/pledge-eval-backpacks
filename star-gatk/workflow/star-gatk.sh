@@ -41,7 +41,7 @@ for i in $(seq 1 $MAXFA); do
 	fi
 	j=$((i + 1))
 	echo "Extracting chr${i} from Fasta file (${BaseFastaGz})" 
-	sed -n "/>chr${i} ${i}/,+10p" ${BaseFasta} > ${FastaPrefix}.${i}.fa
+	sed -n "/>chr${i} ${i}/,+1000p" ${BaseFasta} > ${FastaPrefix}.${i}.fa
 done
 
 printf -v row "%$(tput cols)s"; echo "${row// /=}"

@@ -1,0 +1,3 @@
+Floability backpacks keep workflow, software, compute, and data requirements together.
+This local file travels with the backpack. The second example file comes from Project Gutenberg.
+TaskVine workers process both files using the same Python function.

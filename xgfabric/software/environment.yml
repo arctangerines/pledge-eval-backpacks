@@ -1,0 +1,6 @@
+name: xgfabric
+channels:
+- conda-forge
+dependencies:
+- python
+- ndcctools
