@@ -1,0 +1,22 @@
+schema_version: 1.0
+default_profile: mixed_text_data
+profiles:
+  mixed_text_data:
+    policy:
+      retry_attempts: 2
+      timeout: 60
+      size_tolerance_bytes: 0
+    data:
+    - name: all.chr1
+      source_type: http
+      source: https://raw.githubusercontent.com/pegasus-isi/1000genome-workflow/refs/heads/master/data/20130502/ALL.chr1.250000.vcf.gz
+      target_location: ALL.chr1.250000.vcf.gz
+    - name: columns
+      source_type: http
+      source: https://raw.githubusercontent.com/pegasus-isi/1000genome-workflow/refs/heads/master/data/20130502/columns.txt
+      target_location: columns.txt
+    - name: eas
+      source_type: http
+      source: https://raw.githubusercontent.com/pegasus-isi/1000genome-workflow/refs/heads/master/data/populations/EAS 
+      target_location: EAS
+
