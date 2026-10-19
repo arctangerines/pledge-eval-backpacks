@@ -14,13 +14,13 @@ num_sims=1
 num_threads=1
 
 # Environment
-module --force purge
-module add openfoam/10.0/gcc/11.5.0 > /dev/null 2>&1
-module add paraview/5.11.2
-module load cuda 2>/dev/null || true
-module load cudnn 2>/dev/null || true
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate cfdaai
+# module --force purge
+# module add openfoam/10.0/gcc/11.5.0 > /dev/null 2>&1
+# module add paraview/5.11.2
+# module load cuda 2>/dev/null || true
+# module load cudnn 2>/dev/null || true
+# source ~/miniconda3/etc/profile.d/conda.sh
+# conda activate cfdaai
 export PATH="bin/:$PATH"
 
 # check if the cups simulation data is present

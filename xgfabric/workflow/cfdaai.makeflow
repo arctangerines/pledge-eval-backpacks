@@ -1,0 +1,49 @@
+# --- Configuration ---
+WORK_DIR=.
+WORKFLOW_NUMBER=1
+WORKFLOW_LOCATION=logs/run_26-08-28_16_38_35/workflows/1
+RESULTS_DIR=results/run_26-08-28_16_38_35/workflow_1
+START_TIME=26-08-28_16_38_35
+LOGS_DIR=logs/run_26-08-28_16_38_35
+SIMULATION_THREADS=1
+NUM_SIMULATIONS=1
+export WORK_DIR
+export WORKFLOW_NUMBER
+export WORKFLOW_LOCATION
+export RESULTS_DIR
+export LOGS_DIR
+export SIMULATION_THREADS
+export NUM_SIMULATIONS
+
+# ============================================================
+# CFDaAI Pipeline - Makeflow
+# ============================================================
+
+# ============================================================
+# Phase 0: Wait for Workers
+# ============================================================
+CATEGORY="wait_for_workers"
+CORES=1
+GPUS=0
+$(WORKFLOW_LOCATION)/workers_ready.out: $(LOGS_DIR) utils
+	python3 utils/wait_workers.py --workers 10 --project xgfabric
+
+
+# ============================================================
+# Phase 1: Data Acquisition
+# ============================================================
+CATEGORY="data_acquisition"
+CORES=1
+GPUS=0
+$(WORKFLOW_LOCATION)/pipeline.0 $(RESULTS_DIR) $(RESULTS_DIR)/data $(RESULTS_DIR)/params/sim_params.csv $(RESULTS_DIR)/params/sim_0.json $(RESULTS_DIR)/params/sim_1.json: $(WORKFLOW_LOCATION)/workers_ready.out
+	LOCAL ./utils/get_data.sh > $(WORKFLOW_LOCATION)/pipeline.0 2>&1
+
+
+# ============================================================
+# Phase 2: Simulations
+# ============================================================
+CATEGORY="simulations"
+CORES=16
+GPUS=0
+$(RESULTS_DIR)/simulations/sim_0.csv $(WORKFLOW_LOCATION)/simulations/of_sim_0.log: $(WORKFLOW_LOCATION)/pipeline.0 $(WORK_DIR)/uge/simulation_uge.sh $(RESULTS_DIR)/params/sim_0.json $(RESULTS_DIR)/data tasks env simulation lib
+	mkdir -p $(WORKFLOW_LOCATION)/simulations && mkdir -p $(RESULTS_DIR)/simulations && bash $(WORK_DIR)/uge/simulation_uge.sh $(RESULTS_DIR)/params $(RESULTS_DIR)/simulations 0 > $(WORKFLOW_LOCATION)/simulations/of_sim_0.log 2>&1
