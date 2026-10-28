@@ -1,0 +1,70 @@
+{
+  "define": {
+      "maxfa":3
+  },
+  "rules": [
+    {
+      "command": "STAR --runThreadN 1 --runMode genomeGenerate --genomeDir gdir --genomeFastaFiles GRCh38.gencode.pa.genome.1.fa GRCh38.gencode.pa.genome.2.fa GRCh38.gencode.pa.genome.3.fa --genomeSAindexNbases 2",
+      "outputs": [
+        "gdir/",
+      ],
+      "inputs": [
+        "GRCh38.gencode.pa.genome.1.fa",
+        "GRCh38.gencode.pa.genome.2.fa",
+        "GRCh38.gencode.pa.genome.3.fa",
+      ]
+    },
+    {
+      "command": "STAR --runThreadN 1 --genomeDir gdir --readFilesIn shortened_SRR10307460_1.fastq shortened_SRR10307460_2.fastq --outFileNamePrefix SRR10307460 --outSAMtype BAM SortedByCoordinate Unsorted --outSAMattrRGline ID:srr SM:Sample1 PL : ILLUMINA LB:Lib1",
+      "outputs": [
+        "SRR10307460Aligned.out.bam",
+        "SRR10307460Aligned.sortedByCoord.out.bam",
+      ],
+      "inputs": [
+        "gdir/",
+        "shortened_SRR10307460_1.fastq",
+        "shortened_SRR10307460_2.fastq",
+      ]
+    },
+    {
+      "command": format("samtools index SRR10307460Aligned.sortedByCoord.out.bam"),
+      "outputs": [
+        format("SRR10307460Aligned.sortedByCoord.out.bam.bai"),
+      ],
+      "inputs": [
+        format("SRR10307460Aligned.sortedByCoord.out.bam"),
+      ]
+    },
+    {
+      "command": format("samtools faidx GRCh38.gencode.pa.genome.%d.fa", idx),
+      "outputs": [
+        format("GRCh38.gencode.pa.genome.%d.fa.fai", idx),
+      ],
+      "inputs": [
+        format("GRCh38.gencode.pa.genome.%d.fa", idx),
+      ]
+    }for idx in range(1, maxfa),
+    {
+      "command": format("gatk CreateSequenceDictionary -R GRCh38.gencode.pa.genome.%d.fa", idx),
+      "outputs": [
+        format("GRCh38.gencode.pa.genome.%d.dict", idx)
+      ],
+      "inputs": [
+        format("GRCh38.gencode.pa.genome.%d.fa", idx),
+        format("GRCh38.gencode.pa.genome.%d.fai", idx),
+      ]
+    }for idx in range(1, maxfa),
+    {
+      "command": format("gatk --java-options \"-Xmx16g\" HaplotypeCaller --native-pair-hmm-threads 1  -R GRCh38.gencode.pa.genome.%d.fa -I SRR10307460Aligned.sortedByCoord.out.bam.bai -O SRR10307460.g.vcf.%d.gz", idx, idx),
+      "outputs": [
+        format("SRR10307460.g.vcf.%d.gz", idx),
+      ],
+      "inputs": [
+        format("GRCh38.gencode.pa.genome.%d.fa", idx),
+        format("GRCh38.gencode.pa.genome.%d.fa.fai", idx),
+        "SRR10307460Aligned.sortedByCoord.out.bam.bai",
+        "SRR10307460Aligned.sortedByCoord.out.bam",
+      ]
+    }for idx in range(1, maxfa)
+  ]
+}
