@@ -1,0 +1,184 @@
+schema_version: 1.0
+default_profile: mixed_text_data
+profiles:
+  mixed_text_data:
+    policy:
+      retry_attempts: 2
+      timeout: 60
+      size_tolerance_bytes: 0
+    data:
+    - name: wc2.1_2.5m_bio
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_2.5m_bio.zip
+      source_type: http
+      target_location: wc2.1_2.5m_bio.zip
+
+    - name: wc2.1_2.5m_elev
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_2.5m_elev.zip
+      source_type: http
+      target_location: wc2.1_2.5m_elev.zip
+
+    - name: wc2.1_2.5m_prec
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_2.5m_prec.zip
+      source_type: http
+      target_location: wc2.1_2.5m_prec.zip
+
+    - name: wc2.1_2.5m_srad
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_2.5m_srad.zip
+      source_type: http
+      target_location: wc2.1_2.5m_srad.zip
+
+    - name: wc2.1_2.5m_tavg
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_2.5m_tavg.zip
+      source_type: http
+      target_location: wc2.1_2.5m_tavg.zip
+
+    - name: wc2.1_2.5m_tmax
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_2.5m_tmax.zip
+      source_type: http
+      target_location: wc2.1_2.5m_tmax.zip
+
+    - name: wc2.1_2.5m_tmin
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_2.5m_tmin.zip
+      source_type: http
+      target_location: wc2.1_2.5m_tmin.zip
+
+    - name: wc2.1_2.5m_vapr
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_2.5m_vapr.zip
+      source_type: http
+      target_location: wc2.1_2.5m_vapr.zip
+
+    - name: wc2.1_2.5m_wind
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_2.5m_wind.zip
+      source_type: http
+      target_location: wc2.1_2.5m_wind.zip
+
+    - name: wc2.1_5m_bio
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_5m_bio.zip
+      source_type: http
+      target_location: wc2.1_5m_bio.zip
+
+    - name: wc2.1_5m_elev
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_5m_elev.zip
+      source_type: http
+      target_location: wc2.1_5m_elev.zip
+
+    - name: wc2.1_5m_prec
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_5m_prec.zip
+      source_type: http
+      target_location: wc2.1_5m_prec.zip
+
+    - name: wc2.1_5m_srad
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_5m_srad.zip
+      source_type: http
+      target_location: wc2.1_5m_srad.zip
+
+    - name: wc2.1_5m_tavg
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_5m_tavg.zip
+      source_type: http
+      target_location: wc2.1_5m_tavg.zip
+
+    - name: wc2.1_5m_tmax
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_5m_tmax.zip
+      source_type: http
+      target_location: wc2.1_5m_tmax.zip
+
+    - name: wc2.1_5m_tmin
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_5m_tmin.zip
+      source_type: http
+      target_location: wc2.1_5m_tmin.zip
+
+    - name: wc2.1_5m_vapr
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_5m_vapr.zip
+      source_type: http
+      target_location: wc2.1_5m_vapr.zip
+
+    - name: wc2.1_5m_wind
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_5m_wind.zip
+      source_type: http
+      target_location: wc2.1_5m_wind.zip
+
+    - name: wc2.1_10m_bio
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_10m_bio.zip
+      source_type: http
+      target_location: wc2.1_10m_bio.zip
+
+    - name: wc2.1_10m_elev
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_10m_elev.zip
+      source_type: http
+      target_location: wc2.1_10m_elev.zip
+
+    - name: wc2.1_10m_prec
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_10m_prec.zip
+      source_type: http
+      target_location: wc2.1_10m_prec.zip
+
+    - name: wc2.1_10m_srad
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_10m_srad.zip
+      source_type: http
+      target_location: wc2.1_10m_srad.zip
+
+    - name: wc2.1_10m_tavg
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_10m_tavg.zip
+      source_type: http
+      target_location: wc2.1_10m_tavg.zip
+
+    - name: wc2.1_10m_tmax
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_10m_tmax.zip
+      source_type: http
+      target_location: wc2.1_10m_tmax.zip
+
+    - name: wc2.1_10m_tmin
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_10m_tmin.zip
+      source_type: http
+      target_location: wc2.1_10m_tmin.zip
+
+    - name: wc2.1_10m_vapr
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_10m_vapr.zip
+      source_type: http
+      target_location: wc2.1_10m_vapr.zip
+
+    - name: wc2.1_10m_wind
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_10m_wind.zip
+      source_type: http
+      target_location: wc2.1_10m_wind.zip
+
+    - name: wc2.1_30s_elev
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_30s_elev.zip
+      source_type: http
+      target_location: wc2.1_30s_elev.zip
+
+    - name: wc2.1_30s_prec
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_30s_prec.zip
+      source_type: http
+      target_location: wc2.1_30s_prec.zip
+
+    - name: wc2.1_30s_srad
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_30s_srad.zip
+      source_type: http
+      target_location: wc2.1_30s_srad.zip
+
+    - name: wc2.1_30s_tavg
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_30s_tavg.zip
+      source_type: http
+      target_location: wc2.1_30s_tavg.zip
+
+    - name: wc2.1_30s_tmax
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_30s_tmax.zip
+      source_type: http
+      target_location: wc2.1_30s_tmax.zip
+
+    - name: wc2.1_30s_tmin
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_30s_tmin.zip
+      source_type: http
+      target_location: wc2.1_30s_tmin.zip
+
+    - name: wc2.1_30s_vapr
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_30s_vapr.zip
+      source_type: http
+      target_location: wc2.1_30s_vapr.zip
+
+    - name: wc2.1_30s_wind
+      source: https://geodata.ucdavis.edu/climate/worldclim/2_1/base/wc2.1_30s_wind.zip
+      source_type: http
+      target_location: wc2.1_30s_wind.zip
+

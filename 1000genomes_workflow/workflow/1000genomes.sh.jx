@@ -40,7 +40,6 @@
       "command": "bin/mutation_overlap.py -c 1 -pop EAS",
       "outputs": [],
       "inputs": [
-        "../../.cache/matplotlib/fontlist-v330.json",
         "EAS",
         "bin/mutation_overlap.py",
         "chr1n.tar.gz",
@@ -59,5 +58,245 @@
         "sifted.SIFT.chr1.txt"
       ]
     }
-  ]
+  ],
+  "define" : {
+    "step": 100,
+    "num_individuals": 12,
+    "chr_num":2,
+    "CHR_FILE": format("ALL.chr%d.250000.vcf", chr_num)
+  },
+  "rules": [
+    {
+      "command": format("bin/individuals.py %s 1 %d %d 6000", CHR_FILE, x, x+step),
+      "outputs": [
+        format("chr%dn-%d-%d.tar.gz", chr_num, x, x+step)
+      ],
+      "inputs": [
+        format("ALL.chr%d.250000.vcf", chr_num),
+        "bin/individuals.py",
+        "columns.txt"
+      ]
+    } for x in range(1, num_individuals*step, step),
+    {
+      "command": "bin/individuals_merge.py 1 chr2n-201-401.tar.gz",
+      "outputs": [
+        "chr2n.tar.gz"
+      ],
+      "inputs": [
+        "bin/individuals_merge.py" ] +
+        [format("chr2n-%d-%d.tar.gz", x, x + step) for x in range(1, num_individuals*step, step)]
+    },
+    {
+      "command": "bin/sifting.py ALL.chr2.phase3_shapeit2_mvncall_integrated_v5.20130502.sites.annotation.vcf 1",
+      "outputs": [
+        "sifted.SIFT.chr2.txt"
+      ],
+      "inputs": [
+        "ALL.chr2.phase3_shapeit2_mvncall_integrated_v5.20130502.sites.annotation.vcf",
+        "bin/sifting.py"
+      ]
+    },
+    {
+      "command": "bin/mutation_overlap.py -c 1 -pop EAS",
+      "outputs": [],
+      "inputs": [
+        "EAS",
+        "bin/mutation_overlap.py",
+        "chr2n.tar.gz",
+        "columns.txt",
+        "sifted.SIFT.chr2.txt"
+      ]
+    },
+    {
+      "command": "bin/frequency.py -c 1 -pop EAS",
+      "outputs": [],
+      "inputs": [
+        "EAS",
+        "bin/frequency.py",
+        "chr2n.tar.gz",
+        "columns.txt",
+        "sifted.SIFT.chr2.txt"
+      ]
+    }
+  ],
+  "define" : {
+    "step": 100,
+    "num_individuals": 12,
+    "chr_num":3,
+    "CHR_FILE": format("ALL.chr%d.250000.vcf", chr_num)
+  },
+  "rules": [
+    {
+      "command": format("bin/individuals.py %s 1 %d %d 6000", CHR_FILE, x, x+step),
+      "outputs": [
+        format("chr%dn-%d-%d.tar.gz", chr_num, x, x+step)
+      ],
+      "inputs": [
+        format("ALL.chr%d.250000.vcf", chr_num),
+        "bin/individuals.py",
+        "columns.txt"
+      ]
+    } for x in range(1, num_individuals*step, step),
+    {
+      "command": "bin/individuals_merge.py 1 chr3n-201-401.tar.gz",
+      "outputs": [
+        "chr3n.tar.gz"
+      ],
+      "inputs": [
+        "bin/individuals_merge.py" ] +
+        [format("chr3n-%d-%d.tar.gz", x, x + step) for x in range(1, num_individuals*step, step)]
+    },
+    {
+      "command": "bin/sifting.py ALL.chr3.phase3_shapeit2_mvncall_integrated_v5.20130502.sites.annotation.vcf 1",
+      "outputs": [
+        "sifted.SIFT.chr3.txt"
+      ],
+      "inputs": [
+        "ALL.chr3.phase3_shapeit2_mvncall_integrated_v5.20130502.sites.annotation.vcf",
+        "bin/sifting.py"
+      ]
+    },
+    {
+      "command": "bin/mutation_overlap.py -c 1 -pop EAS",
+      "outputs": [],
+      "inputs": [
+        "EAS",
+        "bin/mutation_overlap.py",
+        "chr3n.tar.gz",
+        "columns.txt",
+        "sifted.SIFT.chr3.txt"
+      ]
+    },
+    {
+      "command": "bin/frequency.py -c 1 -pop EAS",
+      "outputs": [],
+      "inputs": [
+        "EAS",
+        "bin/frequency.py",
+        "chr3n.tar.gz",
+        "columns.txt",
+        "sifted.SIFT.chr3.txt"
+      ]
+    }
+  ],
+  "define" : {
+    "step": 100,
+    "num_individuals": 12,
+    "chr_num":4,
+    "CHR_FILE": format("ALL.chr%d.250000.vcf", chr_num)
+  },
+  "rules": [
+    {
+      "command": format("bin/individuals.py %s 1 %d %d 6000", CHR_FILE, x, x+step),
+      "outputs": [
+        format("chr%dn-%d-%d.tar.gz", chr_num, x, x+step)
+      ],
+      "inputs": [
+        format("ALL.chr%d.250000.vcf", chr_num),
+        "bin/individuals.py",
+        "columns.txt"
+      ]
+    } for x in range(1, num_individuals*step, step),
+    {
+      "command": "bin/individuals_merge.py 1 chr4n-201-401.tar.gz",
+      "outputs": [
+        "chr4n.tar.gz"
+      ],
+      "inputs": [
+        "bin/individuals_merge.py" ] +
+        [format("chr4n-%d-%d.tar.gz", x, x + step) for x in range(1, num_individuals*step, step)]
+    },
+    {
+      "command": "bin/sifting.py ALL.chr4.phase3_shapeit2_mvncall_integrated_v5.20130502.sites.annotation.vcf 1",
+      "outputs": [
+        "sifted.SIFT.chr4.txt"
+      ],
+      "inputs": [
+        "ALL.chr4.phase3_shapeit2_mvncall_integrated_v5.20130502.sites.annotation.vcf",
+        "bin/sifting.py"
+      ]
+    },
+    {
+      "command": "bin/mutation_overlap.py -c 1 -pop EAS",
+      "outputs": [],
+      "inputs": [
+        "EAS",
+        "bin/mutation_overlap.py",
+        "chr4n.tar.gz",
+        "columns.txt",
+        "sifted.SIFT.chr4.txt"
+      ]
+    },
+    {
+      "command": "bin/frequency.py -c 1 -pop EAS",
+      "outputs": [],
+      "inputs": [
+        "EAS",
+        "bin/frequency.py",
+        "chr4n.tar.gz",
+        "columns.txt",
+        "sifted.SIFT.chr4.txt"
+      ]
+    }
+  ],
+  "define" : {
+    "step": 100,
+    "num_individuals": 12,
+    "chr_num":5,
+    "CHR_FILE": format("ALL.chr%d.250000.vcf", chr_num)
+  },
+  "rules": [
+    {
+      "command": format("bin/individuals.py %s 1 %d %d 6000", CHR_FILE, x, x+step),
+      "outputs": [
+        format("chr%dn-%d-%d.tar.gz", chr_num, x, x+step)
+      ],
+      "inputs": [
+        format("ALL.chr%d.250000.vcf", chr_num),
+        "bin/individuals.py",
+        "columns.txt"
+      ]
+    } for x in range(1, num_individuals*step, step),
+    {
+      "command": "bin/individuals_merge.py 1 chr5n-201-401.tar.gz",
+      "outputs": [
+        "chr5n.tar.gz"
+      ],
+      "inputs": [
+        "bin/individuals_merge.py" ] +
+        [format("chr5n-%d-%d.tar.gz", x, x + step) for x in range(1, num_individuals*step, step)]
+    },
+    {
+      "command": "bin/sifting.py ALL.chr5.phase3_shapeit2_mvncall_integrated_v5.20130502.sites.annotation.vcf 1",
+      "outputs": [
+        "sifted.SIFT.chr5.txt"
+      ],
+      "inputs": [
+        "ALL.chr5.phase3_shapeit2_mvncall_integrated_v5.20130502.sites.annotation.vcf",
+        "bin/sifting.py"
+      ]
+    },
+    {
+      "command": "bin/mutation_overlap.py -c 1 -pop EAS",
+      "outputs": [],
+      "inputs": [
+        "EAS",
+        "bin/mutation_overlap.py",
+        "chr5n.tar.gz",
+        "columns.txt",
+        "sifted.SIFT.chr5.txt"
+      ]
+    },
+    {
+      "command": "bin/frequency.py -c 1 -pop EAS",
+      "outputs": [],
+      "inputs": [
+        "EAS",
+        "bin/frequency.py",
+        "chr5n.tar.gz",
+        "columns.txt",
+        "sifted.SIFT.chr5.txt"
+      ]
+    }
+  ],
 }

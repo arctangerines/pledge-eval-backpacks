@@ -1,0 +1,13 @@
+name: default
+channels:
+- conda-forge
+- nodefaults
+dependencies:
+- pip >=26.2.1,<27
+- gwpy >=4.0.1,<5
+- lalframe >=3.0.7,<4
+- pycbc ==2.9.0
+- astropy ==6.1.7
+- setuptools <82
+- lalsuite >=6.57,<7
+
