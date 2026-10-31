@@ -10,4 +10,5 @@ dependencies:
 - astropy ==6.1.7
 - setuptools <82
 - lalsuite >=6.57,<7
+- ndcctools=7.17.1
 
