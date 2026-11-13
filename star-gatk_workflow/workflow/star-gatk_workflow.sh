@@ -43,36 +43,4 @@ fi
  	echo "Extracting chr${i} from Fasta file (${BaseFastaGz})" 
  	sed -n "/>chr${i} ${i}/,+1000p" ${BaseFasta} > ${FastaPrefix}.${i}.fa
  done
-makeflow --jx ./star_gatk.sh.jx -T vine -p 9129
-
-printf -v row "%$(tput cols)s"; echo "${row// /=}"
-echo "Generate GenomeRequirements.txt"
-printf -v row "%$(tput cols)s"; echo "${row// /=}"
-STAR --runThreadN ${ThreadNum} --runMode genomeGenerate --genomeDir ${GenomeDir} --genomeFastaFiles "${FastaPrefix}"*.fa --genomeSAindexNbases 2
-
-printf -v row "%$(tput cols)s"; echo "${row// /=}"
-echo "Mapping Fastq files"
-printf -v row "%$(tput cols)s"; echo "${row// /=}"
-
-STAR --runThreadN ${ThreadNum} --genomeDir ${GenomeDir} --readFilesIn shortened_${FastqBase}*.fastq --outFileNamePrefix ${FastqBase} --outSAMtype BAM SortedByCoordinate Unsorted --outSAMattrRGline ID:srr SM:Sample1 PL : ILLUMINA LB:Lib1
-
-samtools index "${FastqBase}Aligned.sortedByCoord.out.bam"
-
-for i in $(seq 1 $MAXFA); do
-
-
-	samtools faidx "${FastaPrefix}.${i}.fa"
-
-	if [[ -f "${FastaPrefix}.${i}.dict" ]]; then
-		printf -v row "%$(tput cols)s"; echo "${row// /*}"
-		echo "Deleting previous dictionary"
-		printf -v row "%$(tput cols)s"; echo "${row// /*}"
-		rm "${FastaPrefix}.${i}.dict"
-	fi
-	gatk CreateSequenceDictionary -R ${FastaPrefix}.${i}.fa
-
-	printf -v row "%$(tput cols)s"; echo "${row// /=}"
-	echo "Running the HaplotypeCaller"
-	printf -v row "%$(tput cols)s"; echo "${row// /=}"
-	gatk --java-options "-Xmx16g" HaplotypeCaller --native-pair-hmm-threads 1  -R ${FastaPrefix}.${i}.fa -I "${FastqBase}Aligned.sortedByCoord.out.bam" -O "${FastqBase}.g.vcf.${i}.gz"
-done
+makeflow --jx ./star_gatk.sh.jx -T vine --project-name "${VINE_MANAGER_NAME}"
