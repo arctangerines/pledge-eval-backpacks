@@ -9,11 +9,17 @@ at different resolutions.
 ## Executing
 Run the backpack with:
 ```
-floability execute --backpack . --measure-performance --manager-ports 9129:9800
+floability execute --backpack . --manager-ports 9129:9800
 ```
+
+You can also indicate the batch system:
+```
+floability execute --backpack . --manager-ports 9129:9800 --batch-type condor
+```
+
 If you wish to run it locally:
 ```
-floability execute --backpack . --entrypoint gdal_local.sh
+floability execute --backpack . --entrypoint gdal_local.sh --no-worker
 ```
 
 ## GDAL Reference

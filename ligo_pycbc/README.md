@@ -8,7 +8,12 @@ Run the backpack with:
 ```
 floability execute --backpack . --measure-performance --manager-ports 9129:9800
 ```
+You can also indicate the batch system:
+```
+floability execute --backpack . --manager-ports 9129:9800 --batch-type condor
+```
+
 If you wish to run it locally:
 ```
-floability execute --backpack . --entrypoint ligo_pycbc_local.sh
+floability execute --backpack . --entrypoint ligo_pycbc_local.sh --no-worker
 ```
