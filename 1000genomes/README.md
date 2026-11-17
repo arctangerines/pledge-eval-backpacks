@@ -10,7 +10,7 @@ floability execute --backpack . --measure-performance --manager-ports 9129:9800
 ```
 If you wish to run it locally:
 ```
-floability execute --backpack . --entrypoint workflow/1000genomes_local.sh
+floability execute --backpack . --entrypoint 1000genomes_local.sh
 ```
 
 ## 1000Genomes reference
