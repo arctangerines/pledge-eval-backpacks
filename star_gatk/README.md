@@ -6,7 +6,7 @@ variants in four fasta files containing sample DNA sequences from the human geno
 ## Executing
 Run the backpack with:
 ```
-floability execute --backpack . --measure-performance --manager-ports 9129:9800
+floability execute --backpack . --manager-ports 9129:9800
 ```
 
 You can also indicate the batch system:

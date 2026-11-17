@@ -5,7 +5,7 @@ designed to consume real-time sensor data from agricultural sites and simulate p
 ## Executing
 Run the backpack with:
 ```
-floability execute --backpack .
+floability execute --backpack . --no-worker
 ```
 
 ## XgFabric reference
