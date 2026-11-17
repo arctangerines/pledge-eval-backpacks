@@ -4,9 +4,13 @@ which is used to measure the frequency of generic features
 and find the similarities across populations.
 
 ## Executing
-Run the backpack with
-```sh
-floability execute --backpack .
+Run the backpack with:
+```
+floability execute --backpack . --measure-performance --manager-ports 9129:9800
+```
+If you wish to run it locally:
+```
+floability execute --backpack . --entry-point workflow/1000genomes_local.sh
 ```
 
 ## 1000Genomes reference

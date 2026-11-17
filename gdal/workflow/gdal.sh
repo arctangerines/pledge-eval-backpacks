@@ -18,26 +18,5 @@ for gt in ${Geodata[@]}; do
     echo $gt
     unzip $gt.zip -d $gt
 done
-for gt in ${WCdata[@]}; do
-    echo $gt
-    gdalbuildvrt $gt.vrt $PWD/$gt/*.tif
-done
 
-for wc in ${WCdataPrefix[@]}; do
-    gdalwarp -of GTiff -r bilinear -multi "$(pwd)/${wc}_prec.vrt" "$(pwd)/${wc}_srad.vrt" "$(pwd)/${wc}_elev.vrt" "$(pwd)/${wc}_elev_prec_srad.tif"
-    gdalwarp -of GTiff -r bilinear -multi "$(pwd)/${wc}_tavg.vrt" "$(pwd)/${wc}_srad.vrt" "$(pwd)/${wc}_elev.vrt" "$(pwd)/${wc}_elev_tavg_srad.tif"
-    gdalwarp -of GTiff -r bilinear -multi "$(pwd)/${wc}_tmax.vrt" "$(pwd)/${wc}_tmin.vrt" "$(pwd)/${wc}_vapr.vrt" "$(pwd)/${wc}_elev.vrt" "$(pwd)/${wc}_elev_tmax_tmin_vapr.tif"
-    gdalwarp -of GTiff -r bilinear -multi "$(pwd)/${wc}_prec.vrt" "$(pwd)/${wc}_vapr.vrt" "$(pwd)/${wc}_tavg.vrt" "$(pwd)/${wc}_elev.vrt" "$(pwd)/${wc}_elev_prec_vapr_tavg.tif"
-    gdalwarp -of GTiff -r bilinear -multi "$(pwd)/${wc}_prec.vrt" "$(pwd)/${wc}_srad.vrt" "$(pwd)/${wc}_vapr.vrt" "$(pwd)/${wc}_elev.vrt" "$(pwd)/${wc}_elev_prec_srad_vapr.tif"
-done
-
-for gt in ${WCdataLarge[@]}; do
-    echo $gt
-    gdalbuildvrt $gt.vrt $PWD/$gt/*.tif
-done
-
-for wc in ${WCdataPrefixLarge[@]}; do
-    gdalwarp -of GTiff -r bilinear -multi "$(pwd)/${wc}_prec.vrt" "$(pwd)/${wc}_srad.vrt" "$(pwd)/${wc}_elev.vrt" "$(pwd)/${wc}_elev_prec_srad.tif"
-    gdalwarp -of GTiff -r bilinear -multi "$(pwd)/${wc}_prec.vrt" "$(pwd)/${wc}_vapr.vrt" "$(pwd)/${wc}_elev.vrt" "$(pwd)/${wc}_elev_prec_vapr.tif"
-    gdalwarp -of GTiff -r bilinear -multi "$(pwd)/${wc}_prec.vrt" "$(pwd)/${wc}_wind.vrt" "$(pwd)/${wc}_elev.vrt" "$(pwd)/${wc}_elev_wind_prec.tif"
-done
+makeflow --jx ./gdal.sh.jx -T vine --project-name "${VINE_MANAGER_NAME}"
