@@ -10,7 +10,7 @@ floability execute --backpack . --measure-performance --manager-ports 9129:9800
 ```
 If you wish to run it locally:
 ```
-floability execute --backpack . --entry-point workflow/star_gatk_local.sh
+floability execute --backpack . --entrypoint workflow/star_gatk_local.sh
 ```
 
 ## STAR reference

@@ -13,7 +13,7 @@ floability execute --backpack . --measure-performance --manager-ports 9129:9800
 ```
 If you wish to run it locally:
 ```
-floability execute --backpack . --entry-point workflow/gdal_local.sh
+floability execute --backpack . --entrypoint workflow/gdal_local.sh
 ```
 
 ## GDAL Reference
