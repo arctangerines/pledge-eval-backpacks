@@ -1,6 +1,6 @@
 {
   "define": {
-      "maxfa":3
+      "maxfa":5
   },
   "rules": [
     {
@@ -12,6 +12,8 @@
         "GRCh38.gencode.pa.genome.1.fa",
         "GRCh38.gencode.pa.genome.2.fa",
         "GRCh38.gencode.pa.genome.3.fa",
+        "GRCh38.gencode.pa.genome.4.fa",
+        "GRCh38.gencode.pa.genome.5.fa",
       ]
     },
     {
@@ -62,6 +64,7 @@
       "inputs": [
         format("GRCh38.gencode.pa.genome.%d.fa", idx),
         format("GRCh38.gencode.pa.genome.%d.fa.fai", idx),
+        format("GRCh38.gencode.pa.genome.%d.dict", idx),
         "SRR10307460Aligned.sortedByCoord.out.bam.bai",
         "SRR10307460Aligned.sortedByCoord.out.bam",
       ]
