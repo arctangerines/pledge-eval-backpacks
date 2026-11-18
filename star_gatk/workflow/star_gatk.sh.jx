@@ -1,10 +1,10 @@
 {
   "define": {
-      "maxfa":5
+      "maxfa":6
   },
   "rules": [
     {
-      "command": "STAR --runThreadN 1 --runMode genomeGenerate --genomeDir gdir --genomeFastaFiles GRCh38.gencode.pa.genome.1.fa GRCh38.gencode.pa.genome.2.fa GRCh38.gencode.pa.genome.3.fa --genomeSAindexNbases 2",
+      "command": "STAR --runThreadN 1 --runMode genomeGenerate --genomeDir gdir --genomeFastaFiles GRCh38.gencode.pa.genome.1.fa GRCh38.gencode.pa.genome.2.fa GRCh38.gencode.pa.genome.3.fa GRCh38.gencode.pa.genome.4.fa GRCh38.gencode.pa.genome.5.fa --genomeSAindexNbases 2",
       "outputs": [
         "gdir/",
       ],

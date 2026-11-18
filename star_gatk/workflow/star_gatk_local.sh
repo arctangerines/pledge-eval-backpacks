@@ -8,7 +8,7 @@ FastqBase="${FastqFiles[0]}"
 BaseFastaGz="GRCh38.primary_assembly.genome.fa.gz"
 BaseFasta="GRCh38.primary_assembly.genome.fa"
 FastaPrefix="GRCh38.gencode.pa.genome"
-MAXFA=1
+MAXFA=5
 GenomeDir="gdir"
 STAR_filein="${FastqBase}.fastq"
 #head -n 26091 SRR40671052.fastq > srr_trimmed.fastq
