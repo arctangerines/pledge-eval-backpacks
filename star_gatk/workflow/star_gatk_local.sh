@@ -14,36 +14,6 @@ STAR_filein="${FastqBase}.fastq"
 #head -n 26091 SRR40671052.fastq > srr_trimmed.fastq
 ThreadNum=1
 
-if [[ ! -f "${FastqBase}.fastq" ]]; then
-   echo "Fetching FASTQ files..."
-   fasterq-dump --split-files "${FastqBase}"
-   for f in ${FastqBase}*.fastq; do
-	   head -n 40000 ${f} > shortened_${f}
-   done 
-
-else
-	echo "${FastqBase} found..."
-fi
-
-if [[ ! -f "${BaseFasta}" ]]; then
-	#wget "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_50/GRCh38.primary_assembly.genome.fa.gz"
-	#gunzip "${BaseFastaGz}"
-	zcat "${BaseFastaGz}" > "${BaseFasta}"
-
-else
-	echo "${BaseFastaGz} found..."
-fi
-
-for i in $(seq 1 $MAXFA); do 
-	echo "${FastaPrefix}.${i}"
-	if [[ -f ${FastaPrefix}.${i}.fa ]]; then 
-		continue 
-	fi
-	j=$((i + 1))
-	echo "Extracting chr${i} from Fasta file (${BaseFastaGz})" 
-	sed -n "/>chr${i} ${i}/,+1000p" ${BaseFasta} > ${FastaPrefix}.${i}.fa
-done
-
 printf -v row "%$(tput cols)s"; echo "${row// /=}"
 echo "Generate GenomeRequirements.txt"
 printf -v row "%$(tput cols)s"; echo "${row// /=}"
@@ -53,7 +23,7 @@ printf -v row "%$(tput cols)s"; echo "${row// /=}"
 echo "Mapping Fastq files"
 printf -v row "%$(tput cols)s"; echo "${row// /=}"
 
-STAR --runThreadN ${ThreadNum} --genomeDir ${GenomeDir} --readFilesIn shortened_${FastqBase}*.fastq --outFileNamePrefix ${FastqBase} --outSAMtype BAM SortedByCoordinate Unsorted --outSAMattrRGline ID:srr SM:Sample1 PL : ILLUMINA LB:Lib1
+STAR --runThreadN ${ThreadNum} --genomeDir ${GenomeDir} --readFilesIn shortened_${FastqBase}_1.fastq shortened_${FastqBase}_2.fastq --outFileNamePrefix ${FastqBase} --outSAMtype BAM SortedByCoordinate Unsorted --outSAMattrRGline ID:srr SM:Sample1 PL : ILLUMINA LB:Lib1
 
 samtools index "${FastqBase}Aligned.sortedByCoord.out.bam"
 

@@ -7,7 +7,32 @@ profiles:
       timeout: 60
       size_tolerance_bytes: 0
     data:
-    - name: GRCh38.primary_assembly.genome.fa
-      source_type: http
-      source: https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_50/GRCh38.primary_assembly.genome.fa.gz
-      target_location: GRCh38.primary_assembly.genome.fa.gz
+    - name: fastq_1
+      source_type: backpack
+      source: data/sra/shortened_SRR10307460_1.fastq
+      target_location: shortened_SRR10307460_1.fastq
+    - name: fastq_2
+      source_type: backpack
+      source: data/sra/shortened_SRR10307460_2.fastq
+      target_location: shortened_SRR10307460_2.fastq
+    - name: fa_1
+      source_type: backpack
+      source: data/genome/GRCh38.gencode.pa.genome.1.fa
+      target_location: GRCh38.gencode.pa.genome.1.fa
+    - name: fa_2
+      source_type: backpack
+      source: data/genome/GRCh38.gencode.pa.genome.2.fa
+      target_location: GRCh38.gencode.pa.genome.2.fa
+    - name: fa_3
+      source_type: backpack
+      source: data/genome/GRCh38.gencode.pa.genome.3.fa
+      target_location: GRCh38.gencode.pa.genome.3.fa
+    - name: fa_4
+      source_type: backpack
+      source: data/genome/GRCh38.gencode.pa.genome.4.fa
+      target_location: GRCh38.gencode.pa.genome.4.fa
+    - name: fa_5
+      source_type: backpack
+      source: data/genome/GRCh38.gencode.pa.genome.5.fa
+      target_location: GRCh38.gencode.pa.genome.5.fa
+
