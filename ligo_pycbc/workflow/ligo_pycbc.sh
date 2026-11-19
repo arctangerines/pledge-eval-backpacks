@@ -1,4 +1,4 @@
 #!/bin/bash
 
-makeflow --jx ./ligo_pycbc.sh.jx -T vine --project-name "${VINE_MANAGER_NAME}"
+makeflow --jx ./ligo_pycbc.jx -T vine --project-name "${VINE_MANAGER_NAME}"
 

@@ -19,4 +19,4 @@ for gt in ${Geodata[@]}; do
     unzip $gt.zip -d $gt
 done
 
-makeflow --jx ./gdal.sh.jx -T vine --project-name "${VINE_MANAGER_NAME}"
+makeflow --jx ./gdal.jx -T vine --project-name "${VINE_MANAGER_NAME}"

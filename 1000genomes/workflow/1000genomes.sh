@@ -12,4 +12,4 @@ fi
 
 for ((i=1; i <= chr_i; i++)); do gunzip -f -k ALL.chr${i}.250000.vcf.gz; done
 
-makeflow --jx ./1000genomes.sh.jx -T vine --project-name "${VINE_MANAGER_NAME}"
+makeflow --jx ./1000genomes.jx -T vine --project-name "${VINE_MANAGER_NAME}"
